@@ -32,7 +32,7 @@
 										</Template>
 									</GridColumn>
 
-									@*  <GridColumn Field=@nameof(Employee.User.Email) HeaderText="Email"></GridColumn> *@
+									<GridColumn Field=@nameof(Employee.User.Email) HeaderText="Email"></GridColumn>
 								</GridColumns>
 							</SfGrid>
 						</div>
@@ -61,8 +61,8 @@ HandleDivisionSelectedEvent="HandleDivisionSelectedEvent"
 HandleSaveEmployeeClickedEvent="HandleSaveEmployeeClickedEvent" />
 
 <EmployeeDetailsPage EmployeeDetails="Employee"
-					 ShowDetailsPage="ShowDetailsPage" 
-					 HandleDetailsPageCloseBtnClicked="HandleDetailsPageCloseBtnClicked" />
+ShowDetailsPage="ShowDetailsPage" 
+HandleDetailsPageCloseBtnClicked="HandleDetailsPageCloseBtnClicked" />
 
 
 <ContextMenu @ref="contextMenu"
@@ -138,6 +138,7 @@ HandleAddRequestEquipmentClicked="AddRequestEquipmentClicked" />
 		ShowMainPage = true;
 		ShowAddOrUpdatePage = false;
 		await LoadEmployees();
+		SelectedEmployee = new();
 	}
 
 	private async Task HandleSaveEmployeeClickedEvent(Employee employee)
@@ -225,6 +226,13 @@ HandleAddRequestEquipmentClicked="AddRequestEquipmentClicked" />
 		SelectedEmployee = new();
 	}
 
+	//Details employee Close btn clicked
+	void HandleDetailsPageCloseBtnClicked()
+	{
+		ShowDetailsPage = false;
+		ShowMainPage = true;
+	}
+
 	private async Task DeleteClicked()
 	{
 		contextMenu!.CloseContextMenu();
@@ -254,4 +262,3 @@ HandleAddRequestEquipmentClicked="AddRequestEquipmentClicked" />
 }
 
 
-@* 10:12 *@
